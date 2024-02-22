@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <!-- Link ke Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Tambahkan font-awesome untuk ikon jika diperlukan -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <style>
+      /* Tambahkan gaya tambahan di sini jika diperlukan */
+      body {
+        padding-top: 60px; /* Sesuaikan dengan tinggi navbar */
+      }
+      .navbar {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Content -->
+    <div class="container mt-4">
+      <div class="card">
+        <div class="card-body">
+          <div class="flash-messages">
+            <div class="alert alert-success" role="alert">
+              Congratulations! you've just finished the course
+            </div>
+          </div>
+          <a href="/users/role/home" class="btn btn-primary">Go Back</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Link ke Bootstrap JS dan Popper.js (ditempatkan di akhir body untuk meningkatkan performa) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

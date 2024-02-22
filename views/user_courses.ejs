@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/app.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.js"></script>
+  </head>
+
+  <body>
+    <header class="header">
+      <section class="flex">
+        <a href="/users/role/home" class="logo">Meducate</a>
+
+        <form class="search-form">
+          <input
+            type="text"
+            name="search_box"
+            required
+            placeholder=" search courses... "
+            maxlength="100"
+          />
+          <button type="submit" class="fas fa-search"></button>
+        </form>
+      </section>
+    </header>
+
+    <section class="home-section">
+      <div class="welcome-msg">
+        <h1>Enroll For a New Course</h1>
+      </div>
+      <div class="welcome-msg">
+        <span id="message"></span>
+
+        <div class="row">
+          <!-- Card 1 -->
+
+          <% courses.forEach(element => { %>
+          <div class="col-md-4">
+            <div class="card course-card">
+              <div class="card-body">
+                <h5 class="card-title"><%= element.title %></h5>
+                <p class="card-text"><%= element.description %></p>
+                <h5 class="card-title badge bg-success">
+                  <%= element.title %>
+                </h5>
+                <br />
+                <form action="" method="post">
+                  <input
+                    type="text"
+                    value="<%= element.id %>"
+                    hidden
+                    name="course_id"
+                  />
+                  <input
+                    type="text"
+                    value="<%= user.id %>"
+                    hidden
+                    name="user_id"
+                  />
+                  <button class="btn btn-primary" onclick="generateAndDownloadPDF('<%= element.id %>', '<%= user.email %>')" type="submit">
+                    Enroll Now !
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[[]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return "";
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+
+      // Get the value of the 'message' parameter from the current URL
+      var messageValue = getParameterByName("message");
+      let messageElement = document.getElementById("message");
+      messageElement.textContent = messageValue;
+
+      function generateAndDownloadPDF(courseId, userEmail) {
+      // Create a PDF content with the enrollment information
+        const pdfContent = `
+          <h1>CONGRATULATIONS ${userEmail}</h1>
+          <p>You have enrolled in the course with ID ${courseId}. We have sent an email verification, please open and verify your enrollment!</p>
+          <p>Thank you and Best Regards,</p>
+          <p>Meducate Admission Team</p>
+        `;
+
+        // Convert the content to PDF using html2pdf
+        html2pdf().from(pdfContent).outputPdf().then((pdf) => {
+        // Download the generated PDF
+        const blob = new Blob([pdf], { type: 'application/pdf' });
+        const link = document.createElement('a');
+        link.href = window.URL.createObjectURL(blob);
+        link.download = 'enrollment_confirmation.pdf';
+        link.click();
+    });
+  }
+    </script>
+
+    <script src="/javascripts/index.js"></script>
+  </body>
+</html>

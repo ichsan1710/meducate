@@ -1,0 +1,526 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --main-color: #007bff;
+    --red: #6610f2;
+    --orange: #f39c12;
+    --light-color: #888;
+    --light-bg: #eee;
+    --black: #2c3e50;
+    --white: #fff;
+    --border: .1rem solid rgba(0, 0, 0, .2);
+    --blue: #007bff;
+	--indigo: #6610f2;
+}
+
+body{
+    background-color: whitesmoke;
+}
+.btn,
+.inline-btn {
+    background-color: var(--main-color);
+}
+
+.btn,
+.option-btn {
+    display: block;
+    width: 50%;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: capitalize;
+    text-decoration: none;
+    padding: 1rem 3rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.flex-btn{
+    display: flex;
+    justify-content: center;
+    gap: .2rem;
+}
+
+.option-btn{
+    background-color: red;
+    text-align:center;
+}
+
+/*----------Section Header ----------*/
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    z-index: 1000;
+    border-bottom: var(--border);
+}
+
+.header .flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding: 1.5rem 2rem;
+    box-shadow: 5px 3px 10px gray;
+}
+
+.header .flex .logo {
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+.header .flex .search-form {
+    width: 40%;
+    border-radius: .1rem;
+    background-color: var(--light-bg);
+    padding: .75rem 1rem;
+    display: flex;
+    gap: 2rem;
+    /* -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem; */
+}
+
+.fa-search{
+    border: none;
+}
+
+.header .flex .search-form input {
+    width: 100%;
+    font-size: 1.25rem;
+    color: var(--black);
+    background: none;
+}
+
+.header .flex .search-form button {
+    background: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--black);
+}
+
+.header .flex .search-form button:hover {
+    color: var(--main-color);
+}
+
+.header .flex .icons div {
+    font-size: 2.5rem;
+    color: var(--black);
+    background-color: var(--light-bg);
+    border-radius: .5rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    line-height: 2.5rem;
+    cursor: pointer;
+    text-align: center;
+    margin-left: .7rem;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
+}
+
+.header .flex .icons div:hover {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.header .flex .profile {
+    position: absolute;
+    top: 75%;
+    right: 2rem;
+    background-color: var(--white);
+    border-radius: .5rem;
+    padding: 1.5rem;
+    text-align: center;
+    overflow: hidden;
+    transform-origin: top right;
+    transform: scale(0);
+    transition: .2s linear;
+    width: 15rem;
+    /* height: 15rem; */
+    border: 2px solid red;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    -webkit-transition: .2s linear;
+    -moz-transition: .2s linear;
+    -ms-transition: .2s linear;
+    -o-transition: .2s linear;
+}
+
+.header .flex .profile.active {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+}
+
+.header .flex .profile .image {
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.header .flex .profile .name {
+    font-size: 1rem;
+    color: var(--black);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.header .flex .profile .role {
+    font-size: 1rem;
+    color: var(--light-color);
+}
+
+.header .flex .profile .btn {
+    margin-left: .8rem;
+}
+
+/* ----------Section SideBar ----------*/
+.side-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 18rem;
+    background-color: var(--white);
+    height: 100vh;
+    border-right: var(--border);
+    z-index: 1200;
+}
+
+.side-bar #close-btn {
+    text-align: right;
+    padding: 2rem;
+    display: none;
+}
+
+.side-bar #close-btn i {
+    text-align: right;
+    font-size: 2.5rem;
+    background: var(--red);
+    border-radius: .5rem;
+    color: var(--white);
+    cursor: pointer;
+    height: 2rem;
+    width: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    -webkit-border-radius: .5rem;
+    -moz-border-radius: .5rem;
+    -ms-border-radius: .5rem;
+    -o-border-radius: .5rem;
+}
+
+.side-bar #close-btn i:hover {
+    background-color: var(--black);
+}
+
+.side-bar .profile {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.side-bar .profile .image {
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.side-bar .profile .name {
+    font-size: 1rem;
+    color: var(--black);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.side-bar .profile .role {
+    font-size: 1rem;
+    color: var(--light-color);
+}
+
+.side-bar .fas{
+    margin-left: 1rem;
+    /* margin-right: 3rem; */
+}
+.side-bar .navbar a {
+    display: block;
+    padding: 1rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+}
+
+.side-bar .navbar a i {
+    margin-right: 0.5rem;
+    color: var(--main-color);
+    transition: .2s linear;
+    -webkit-transition: .2s linear;
+    -moz-transition: .2s linear;
+    -ms-transition: .2s linear;
+    -o-transition: .2s linear;
+}
+
+.side-bar .navbar a span {
+    color: var(--black);
+}
+
+.side-bar .navbar a:hover {
+    background-color: var(--light-bg);
+}
+
+.side-bar .navbar a:hover i {
+    margin-right: 1rem;
+}
+
+.side-bar.active {
+    left: -30rem;
+}
+
+.welcome-msg{
+    background-color: white;
+    padding: 1.5rem 3rem;
+    margin: 3rem 10rem;
+    line-height: 2;
+}
+
+.welcome-msg button{
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: green;
+    border-radius: .5rem;
+    border: none;
+    color: white;
+}
+
+.welcome-msg button:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.welcome-msg h1{
+    font-size: 32px;
+}
+
+.welcome-msg p{
+    font-size: 22px;
+}
+
+.dashboard-container{
+    display: flex;
+    justify-content: center;
+    /* gap: 1rem; */
+}
+
+.dashboard-title{
+    margin-left: 10rem;
+}
+.dashboard-item{
+    margin: 1rem 5rem;
+    margin-bottom: 10rem;
+    padding: 1rem 2rem;
+    width: 25rem;
+    line-height: 2;
+    background-color: white;
+    border-radius: .6rem;
+}
+
+.dashboard-item button{
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: green;
+    border-radius: .5rem;
+    border: none;
+    color: white;
+}
+
+.dashboard-img{
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.dashboard-item h3{
+    margin-bottom: .25rem;
+}
+
+/*---------- Section Form Create Study Plan ----------*/
+.create-section{
+    margin: 1.75rem;
+    padding: 1.8rem;
+}
+
+.create-section .judul{
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+    font-size: 32px;
+}
+
+.create-section .subjudul{
+    margin-bottom: 1rem;
+    font-size: 28px;
+}
+
+.create-section .isi{
+    margin-bottom: 1rem;
+    font-size: 24px;
+}
+
+
+.create-container{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2rem;
+    /* border: 2px solid red; */
+    background-color: white;
+    border-radius: .8rem;
+}
+
+.create-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.time-input{
+    display: flex;
+    gap: 1rem;
+}
+
+.hourDay, .dayWeek{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.create-form input, #btn-createStudyPlan{
+    padding: 1.2rem;
+    border-radius: .5rem;
+    border: 1px solid var(--light-color);
+}
+
+#btn-createStudyPlan{
+    margin-top: 2rem;
+    border: none;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+
+.hide{
+    display: none;
+}
+
+/*---------- Section Landing Study Plan ----------*/
+
+.landing-section{
+    margin: 1.75rem;
+    padding: 1.8rem;
+}
+
+.landing-section .judul{
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+    font-size: 32px;
+}
+
+.landing-container{
+    display: flex;
+    justify-content: space-around;
+    background-color: white;
+    padding: 2rem;
+}
+
+.landing-container .subjudul{
+    font-size: 24px;
+}
+
+.landing-container .isi{
+    font-size: 20px;
+}
+.landing-item{
+    line-height: 2;
+}
+
+#btn-create{
+    margin-top: 2rem;
+    padding: 1rem;
+    border-radius: .5rem;
+    border: none;
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+
+/* ---------- Card Element Study Plan ------------ */
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.card-element{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    margin-top: 2rem;
+    background-color: white;
+    border-radius: .6rem;
+    width: 25%;
+    padding: 2rem;
+    box-shadow: 5px 5px 10px grey;
+    position: relative;
+    /* border: 2px solid red; */
+}
+
+.progress{
+    background-color: red;
+    border-radius: .6rem;
+    padding: .25rem;
+    width: 3rem;
+}
+
+.progress h3{
+    text-align: center;
+}
+
+#btn-close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    text-decoration: none;
+}
+
+.card-element:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}

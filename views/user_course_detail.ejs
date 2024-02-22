@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/app.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <header class="header">
+      <section class="flex">
+        <a href="index.html" class="logo">Meducate</a>
+
+      </section>
+    </header>
+
+    <section class="home-section">
+      <div class="welcome-msg">
+        <span id="message"></span>
+
+        <div class="row">
+          <!-- Card 1 -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">
+                <h3><%= course.title %></h3>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="badge bg-success"
+                >Instructor : <%= course.instructor %></span
+              >
+              <span class="badge bg-success"
+                >Duration : <%= course.duration %> Hours</span
+              >
+              <br />
+              <p class=""><%= course.description %></p>
+              <a href="/users/role/home" class="btn btn-primary">Go back</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[[]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return "";
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      }
+
+      // Get the value of the 'message' parameter from the current URL
+      var messageValue = getParameterByName("message");
+      let messageElement = document.getElementById("message");
+      messageElement.textContent = messageValue;
+    </script>
+
+    <script src="/javascripts/index.js"></script>
+  </body>
+</html>
