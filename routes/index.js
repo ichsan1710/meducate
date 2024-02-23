@@ -5,6 +5,9 @@ const course = require("../routes/course");
 const category = require("../routes/category");
 
 /* GET home page. */
+router.get("/", function (req, res) {
+  res.render("login", {errors: req.flash("errors")})
+});
 router.get("/login", function (req, res) {
     res.render("login", { errors: req.flash("errors") });
 });
